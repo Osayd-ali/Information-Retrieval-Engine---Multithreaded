@@ -6,6 +6,7 @@ I have built a FileRetrievalEngine system which demonstrates the implementation 
 
 ### System Design
 
+```mermaid
 classDiagram
     class AppInterface {
         -ProcessingEngine engine
@@ -67,6 +68,7 @@ classDiagram
     SearchResult --> DocPathFreqPair : contains
     IndexStore --> DocFreqPair : uses
     IndexStore ..> "1..*" DocFreqPair : creates and stores
+```
 
 ### Directory structure
 
