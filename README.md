@@ -2,7 +2,7 @@
 
 ### Intro
 
-I have built a FileRetrievalEngine system which demonstrates the implementation of two important concepts of distributed systems which are application layering and mulithreading. Most of the source code was carried on from assignment 2 where we built a monolithic version of FileRetrievalEngine, but in this assignment I have added the support for mulithreading. Mulithreading will help increase the indexing performance of my application andI have added support for 1,2,4 and 8 threads. Below is few instructions on how to run my application and also my directory structure.
+I have built a InformationRetrievalEngine system which demonstrates the implementation of two important concepts of distributed systems which are application layering and mulithreading. This File Retrieval Engine supports indexing or traversing files from a specified input folder and also supports searching of indexed or traversed documents when a user gives a multiple term query. Upon providing search words, this application will search those words across all the traversed and read files and finally returns a list of top 10 documents contaning those search words in the order of their frequency. I have also added the support for mulithreading in this project. Mulithreading will help increase the indexing performance of my application and I have added support for 1,2,4 and 8 threads. Below is few instructions on how to run my application and also my directory structure.
 
 ### System Design
 
