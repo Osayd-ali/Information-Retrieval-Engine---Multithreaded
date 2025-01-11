@@ -75,17 +75,11 @@ classDiagram
 
 ### Directory structure
 
-After cloning this repository you will need to follow a specific directory structure to run the program.
-
-Firstly, Enter into the directory of csc-435-pa3-Osayd-ali by typing "cd csc-435-pa3-Osayd-ali"
-
-Then enter into app-java directory: "cd app-java"
-
-Here, when you type "ls" you will be able to see datasets directory, java build file and src directory where my source code exists.
-
-You can acces my code if you want to by following the specific path: "cd src/main/java/csc435/app"
-
-After entering into the above path, type "ls" and you will find my source code files. If you wish to enter any source code file type "vi filename.java".
+* After cloning this repository you will need to follow a specific directory structure to run the program.
+* Enter into app-java directory: "cd app-java"
+* Here, when you type "ls" you will be able to see datasets directory, java build file and src directory where my source code exists.
+* You can acces my code if you want to by following the specific path: "cd src/main/java/csc435/app"
+* After entering into the above path, type "ls" and you will find my source code files. If you wish to enter any source code file type "vi filename.java".
 
 Next is how to run my application:-
 
