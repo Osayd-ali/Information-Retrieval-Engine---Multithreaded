@@ -6,6 +6,9 @@ I have built a FileRetrievalEngine system which demonstrates the implementation 
 
 ### System Design
 
+This class diagram illustrates the core architecture of the search engine system, showing the relationships between the user interface (AppInterface), processing layer (ProcessingEngine), and data storage (IndexStore) components.
+
+
 ```mermaid
 classDiagram
     class AppInterface {
