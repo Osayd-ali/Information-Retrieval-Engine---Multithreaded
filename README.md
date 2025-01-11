@@ -4,6 +4,70 @@
 
 I have built a FileRetrievalEngine system which demonstrates the implementation of two important concepts of distributed systems which are application layering and mulithreading. Most of the source code was carried on from assignment 2 where we built a monolithic version of FileRetrievalEngine, but in this assignment I have added the support for mulithreading. Mulithreading will help increase the indexing performance of my application andI have added support for 1,2,4 and 8 threads. Below is few instructions on how to run my application and also my directory structure.
 
+### System Design
+
+classDiagram
+    class AppInterface {
+        -ProcessingEngine engine
+        +AppInterface(ProcessingEngine engine)
+        +readCommands() void
+    }
+    
+    class ProcessingEngine {
+        -IndexStore store
+        -int numWorkerThreads
+        -long bytesIndexed
+        +ProcessingEngine(IndexStore store, int numWorkerThreads)
+        +IndexResult indexFiles(String folderPath)
+        -HashMap~String,Long~ getWordFrequencies(String filePath)
+        +SearchResult searchFiles(ArrayList~String~ terms)
+    }
+    
+    class IndexStore {
+        -HashMap~String,Long~ documentMap
+        -HashMap~String,ArrayList~DocFreqPair~~ termInvertedIndex
+        -ReentrantLock documentMapLock
+        -ReentrantLock termInvertedIndexLock
+        -long documentNumber
+        +IndexStore()
+        +long putDocument(String documentPath)
+        +String getDocument(long documentNumber)
+        +void updateIndex(long documentNumber, HashMap~String,Long~ wordFrequencies)
+        +ArrayList~DocFreqPair~ lookupIndex(String term)
+    }
+    
+    class DocFreqPair {
+        +long documentNumber
+        +long wordFrequency
+        +DocFreqPair(long documentNumber, long wordFrequency)
+    }
+    
+    class IndexResult {
+        +double executionTime
+        +long totalBytesRead
+        +IndexResult(double executionTime, long totalBytesRead)
+    }
+    
+    class SearchResult {
+        +double excutionTime
+        +ArrayList~DocPathFreqPair~ documentFrequencies
+        +SearchResult(double executionTime, ArrayList~DocPathFreqPair~ documentFrequencies)
+    }
+    
+    class DocPathFreqPair {
+        +String documentPath
+        +long wordFrequency
+        +DocPathFreqPair(String documentPath, long wordFrequency)
+    }
+
+    AppInterface --> ProcessingEngine : uses
+    ProcessingEngine --> IndexStore : uses
+    ProcessingEngine ..> IndexResult : creates
+    ProcessingEngine ..> SearchResult : creates
+    SearchResult --> DocPathFreqPair : contains
+    IndexStore --> DocFreqPair : uses
+    IndexStore ..> "1..*" DocFreqPair : creates and stores
+
 ### Directory structure
 
 After cloning this repository you will need to follow a specific directory structure to run the program.
