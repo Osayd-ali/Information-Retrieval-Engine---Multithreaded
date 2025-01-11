@@ -72,6 +72,15 @@ classDiagram
     IndexStore --> DocFreqPair : uses
     IndexStore ..> "1..*" DocFreqPair : creates and stores
 ```
+### Component Explanation
+
+* AppInterface Component: This component is responsible for taking in commands from the user either through command line or a User Interface web form. For this project i implemented the interface from the command line itself where a user can put in some commands to Index a directory path provided or can also search from the indexed document path. This component will forward the commands to the processing engine and prints the results on the screen.
+
+* ProcessingEngine Component: The Processing Engine component is a middle level component where most of the computation operations and the logic of our application is implemented. For the case of this project, ProcessingEngine component was responsible to implement two main operations i.e. indexFolder() operation and searchFiles() operation. I implemented indexFolder() operation in such a way that it receives a document path as a string argument and builds an index by traversing all of the documents found in the folder. This is where the traversing or “crawling” of document paths happen to reach the target file which is to be indexed. For the searchFiles() i took a list of words as an argument from the user and these words will be searched in the documents and we also count the frequency of how many times the words are appearing in multiple documents, finally we return a sorted list where those document paths are returned which has the highest frequency and then so on.
+
+* IndexStore Component: The indexStore layer is the inner most layer which is responsible for providing services to processing layer like accessing, reading, updating the crucial data which is organised in a structured manner. IndexStore component also takes care of creating data structures where we organise the data and provide easy and efficient access to it. In the case of my application, IndexStore maintains two datastructures namely documentMap and termInvertedIndex. Both data structures are implemented as hash maps in my application. DocumentMap index is sotring a mapping between relative paths of documents and a unique identifier number. termInvertedIndex is responsible for extracting words which are in the form of keys from the documents and also maintains a list of pairs of two numbers which signify document number and frequency of words. I used the services provided by indexStore() the most throughout my build of this application.
+
+Throughout the buiild of this application, I used Java programming language to write the source code for the three main components. I also used java build tool called maven which helped me build this project efficiently and also helped in running this application.
 
 ### Directory structure
 
