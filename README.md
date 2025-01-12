@@ -1,4 +1,4 @@
-## Information Retrieval Engine with Mulithreading
+## Information Retrieval Engine with Multithreading
 
 ### Intro
 
